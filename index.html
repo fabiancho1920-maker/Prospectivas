@@ -1,0 +1,864 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Líder de Prospectiva — Perfil Integral</title>
+<link href="https://fonts.googleapis.com/css2?family=Nunito:wght@300;400;600;700;800;900&family=Playfair+Display:ital,wght@0,700;1,700&display=swap" rel="stylesheet">
+<style>
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+:root{
+  --bg:    #0d1117;
+  --bg2:   #161b26;
+  --bg3:   #1e2535;
+  --c1:    #3b82f6;
+  --c2:    #10b981;
+  --c3:    #f59e0b;
+  --c4:    #f43f5e;
+  --c5:    #8b5cf6;
+  --c6:    #06b6d4;
+  --white: #ffffff;
+  --text:  #e2e8f0;
+  --muted: #94a3b8;
+  --border:#ffffff12;
+  --surface:#ffffff06;
+}
+html{scroll-behavior:smooth}
+body{
+  font-family:'Nunito',sans-serif;
+  background:var(--bg);
+  min-height:100vh;
+  color:var(--text);
+}
+
+/* ── REVEAL ────────────────────────── */
+.rv{opacity:0;transform:translateY(20px);transition:opacity .6s ease,transform .6s ease}
+.rv.on{opacity:1;transform:none}
+.d1{transition-delay:.07s}.d2{transition-delay:.14s}.d3{transition-delay:.21s}
+.d4{transition-delay:.28s}.d5{transition-delay:.35s}.d6{transition-delay:.42s}
+
+/* ══ HEADER ════════════════════════════ */
+.site-header{
+  background:linear-gradient(135deg,#0d1117 0%,#1a2235 60%,#0d1117 100%);
+  border-bottom:1px solid var(--border);
+  padding:44px 40px 0;
+  position:relative;overflow:hidden;
+}
+.hdr-glow{
+  position:absolute;top:-120px;left:50%;transform:translateX(-50%);
+  width:700px;height:360px;border-radius:50%;
+  background:conic-gradient(from 0deg,#3b82f618,#10b98118,#f59e0b18,#f43f5e18,#8b5cf618,#06b6d418,#3b82f618);
+  filter:blur(70px);pointer-events:none;
+}
+.hdr-inner{position:relative;z-index:2;text-align:center;max-width:720px;margin:0 auto}
+.hdr-badge{
+  display:inline-flex;align-items:center;gap:8px;
+  background:rgba(255,255,255,.06);border:1px solid rgba(255,255,255,.12);
+  border-radius:4px;padding:5px 16px;
+  font-size:10px;font-weight:800;letter-spacing:.14em;text-transform:uppercase;
+  color:var(--muted);margin-bottom:18px;
+  animation:fadeDown .7s both;
+}
+@keyframes fadeDown{from{opacity:0;transform:translateY(-12px)}to{opacity:1;transform:none}}
+.site-header h1{
+  font-family:'Playfair Display',serif;
+  font-size:38px;line-height:1.12;color:var(--white);
+  animation:fadeUp .8s .12s both;
+}
+.site-header h1 em{font-style:italic;color:var(--c3)}
+.site-header p{
+  margin-top:10px;font-size:14px;color:var(--muted);
+  font-weight:400;animation:fadeUp .8s .25s both;
+}
+@keyframes fadeUp{from{opacity:0;transform:translateY(14px)}to{opacity:1;transform:none}}
+
+/* ── TABS ──────────────────────────── */
+.tabs{
+  display:flex;justify-content:center;gap:4px;
+  margin-top:32px;padding:0 20px;
+  position:relative;z-index:2;
+  animation:fadeUp .8s .38s both;
+}
+.tab-btn{
+  display:flex;align-items:center;gap:8px;
+  padding:12px 24px;border:none;cursor:pointer;
+  background:transparent;
+  font-family:'Nunito',sans-serif;font-size:12.5px;font-weight:700;
+  color:var(--muted);letter-spacing:.03em;
+  border-radius:10px 10px 0 0;
+  border-top:2px solid transparent;
+  border-left:1px solid transparent;
+  border-right:1px solid transparent;
+  transition:all .25s;
+  white-space:nowrap;
+}
+.tab-btn:hover{color:var(--white);background:rgba(255,255,255,.05)}
+.tab-btn.active{
+  color:var(--white);
+  background:var(--bg2);
+  border-top-color:var(--c3);
+  border-left-color:var(--border);
+  border-right-color:var(--border);
+}
+.tab-btn .t-num{
+  width:20px;height:20px;border-radius:50%;
+  display:flex;align-items:center;justify-content:center;
+  font-size:10px;font-weight:900;flex-shrink:0;
+}
+.tab-btn.active .t-num{background:var(--c3);color:#000}
+.tab-btn:not(.active) .t-num{background:rgba(255,255,255,.08);color:var(--muted)}
+
+/* ── CONTENT ───────────────────────── */
+.content{background:var(--bg2);min-height:600px}
+.tab-panel{display:none;padding:48px 40px 60px}
+.tab-panel.active{display:block;animation:fadeIn .4s ease}
+@keyframes fadeIn{from{opacity:0;transform:translateY(8px)}to{opacity:1;transform:none}}
+
+.panel-intro{
+  text-align:center;max-width:680px;margin:0 auto 40px;
+}
+.panel-intro h2{
+  font-family:'Playfair Display',serif;
+  font-size:26px;color:var(--white);margin-bottom:8px;
+}
+.panel-intro h2 em{font-style:italic;color:var(--c3)}
+.panel-intro p{font-size:13.5px;color:var(--muted);line-height:1.65}
+
+/* ════════════════════════════════════
+   TAB 1 — MAPA MENTAL
+════════════════════════════════════ */
+.map-legend{
+  display:flex;flex-wrap:wrap;justify-content:center;gap:10px;margin-bottom:28px;
+}
+.ml-item{
+  display:flex;align-items:center;gap:7px;
+  background:var(--surface);border:1px solid var(--border);
+  border-radius:50px;padding:6px 14px;
+  font-size:11px;font-weight:700;color:var(--muted);
+  cursor:pointer;transition:all .2s;
+}
+.ml-item:hover{background:rgba(255,255,255,.1);color:var(--white)}
+.ml-dot{width:10px;height:10px;border-radius:50%;flex-shrink:0}
+.map-canvas{width:100%;overflow:visible}
+#mindmap{width:100%;max-width:1000px;display:block;margin:0 auto;cursor:default}
+
+.branch-line{stroke-width:2;fill:none;stroke-dasharray:500;stroke-dashoffset:500;transition:stroke-dashoffset 1s ease}
+.branch-line.drawn{stroke-dashoffset:0}
+.sub-line{stroke-width:1.5;fill:none;opacity:.45;stroke-dasharray:200;stroke-dashoffset:200;transition:stroke-dashoffset .7s ease}
+.sub-line.drawn{stroke-dashoffset:0}
+.branch-group{cursor:pointer}
+.branch-group:hover .b-rect{filter:brightness(1.25)}
+.leaf-group{cursor:pointer}
+.leaf-group:hover .l-rect{opacity:1!important}
+
+/* Detail card below map */
+.map-detail{
+  max-width:900px;margin:28px auto 0;
+  background:var(--bg3);border-radius:14px;
+  border:1px solid var(--border);overflow:hidden;
+  display:none;animation:slideUp .35s ease;
+}
+.map-detail.open{display:block}
+@keyframes slideUp{from{opacity:0;transform:translateY(12px)}to{opacity:1;transform:none}}
+.md-top{padding:22px 28px 18px;display:flex;align-items:center;gap:14px}
+.md-emoji{font-size:30px}
+.md-meta h3{font-size:16px;font-weight:800;color:var(--white)}
+.md-meta p{font-size:11.5px;color:var(--muted);margin-top:2px}
+.md-close{margin-left:auto;width:30px;height:30px;border-radius:50%;background:rgba(255,255,255,.07);border:none;cursor:pointer;font-size:13px;color:var(--muted);display:flex;align-items:center;justify-content:center;transition:background .2s;flex-shrink:0}
+.md-close:hover{background:rgba(255,255,255,.15);color:var(--white)}
+.md-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(190px,1fr));gap:10px;padding:0 28px 24px}
+.md-card{background:rgba(255,255,255,.04);border-radius:10px;border:1px solid var(--border);padding:13px 15px;transition:background .2s}
+.md-card:hover{background:rgba(255,255,255,.07)}
+.md-card-icon{font-size:18px;margin-bottom:7px;display:block}
+.md-card h4{font-size:11.5px;font-weight:700;margin-bottom:4px}
+.md-card p{font-size:10.5px;color:var(--muted);line-height:1.5}
+
+/* ════════════════════════════════════
+   TAB 2 — COMPETENCIAS
+════════════════════════════════════ */
+.skills-grid{display:grid;grid-template-columns:1fr 1fr;gap:20px;max-width:960px;margin:0 auto}
+.sk-card{background:var(--bg3);border-radius:14px;overflow:hidden;border:1px solid var(--border)}
+.sk-head{padding:18px 22px 14px;display:flex;align-items:center;gap:12px}
+.sk-head-b{background:linear-gradient(120deg,#1d4ed8,#3b82f6)}
+.sk-head-a{background:linear-gradient(120deg,#b45309,#f59e0b)}
+.sk-icon{width:40px;height:40px;border-radius:10px;background:rgba(255,255,255,.18);display:flex;align-items:center;justify-content:center;font-size:20px;flex-shrink:0}
+.sk-title{font-size:14px;font-weight:800;color:#fff}
+.sk-sub{font-size:10px;color:rgba(255,255,255,.65);margin-top:2px}
+.sk-body{padding:14px 16px 18px;display:flex;flex-direction:column;gap:9px}
+.sk-item{
+  display:flex;align-items:flex-start;gap:11px;
+  padding:11px 13px;border-radius:9px;
+  background:rgba(255,255,255,.04);border:1px solid var(--border);
+  transition:transform .2s,border-color .2s,background .2s;cursor:default;
+}
+.sk-item:hover{transform:translateX(4px);background:rgba(255,255,255,.07)}
+.sk-item-b:hover{border-color:rgba(59,130,246,.4)}
+.sk-item-a:hover{border-color:rgba(245,158,11,.4)}
+.sk-dot{width:28px;height:28px;border-radius:8px;display:flex;align-items:center;justify-content:center;font-size:13px;flex-shrink:0;margin-top:1px}
+.sd-b{background:rgba(59,130,246,.15)} .sd-a{background:rgba(245,158,11,.15)}
+.sk-text h5{font-size:11.5px;font-weight:700;color:var(--white);margin-bottom:2px}
+.sk-text p{font-size:10px;color:var(--muted);line-height:1.5}
+
+/* VS divider */
+.vs-divider{
+  display:flex;flex-direction:column;align-items:center;justify-content:center;
+  position:absolute;left:50%;transform:translateX(-50%);
+  top:50%;margin-top:-28px;z-index:3;
+}
+.skills-wrap{position:relative}
+.vs-badge{
+  background:var(--c3);color:#000;
+  font-size:11px;font-weight:900;letter-spacing:.08em;
+  padding:6px 14px;border-radius:50px;
+  box-shadow:0 0 24px rgba(245,158,11,.35);
+}
+
+/* ════════════════════════════════════
+   TAB 3 — ACTORES EN EL EJERCICIO
+════════════════════════════════════ */
+.actors-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:16px;max-width:960px;margin:0 auto 36px}
+.ac-card{border-radius:14px;overflow:hidden;border:1px solid var(--border);transition:transform .28s,box-shadow .28s;cursor:pointer}
+.ac-card:hover{transform:translateY(-5px);box-shadow:0 16px 44px rgba(0,0,0,.3)}
+.ac-top{padding:24px 20px 18px;position:relative;overflow:hidden}
+.act-s{background:linear-gradient(140deg,#1849a9,#2563eb)}
+.act-e{background:linear-gradient(140deg,#0f766e,#0d9488)}
+.act-f{background:linear-gradient(140deg,#6d28d9,#7c3aed)}
+.ac-deco{position:absolute;top:-22px;right:-22px;width:90px;height:90px;border-radius:50%;background:rgba(255,255,255,.07)}
+.ac-emoji{font-size:28px;display:block;margin-bottom:10px}
+.ac-top h3{font-size:15px;font-weight:800;color:#fff;margin-bottom:3px}
+.ac-role{font-size:10px;color:rgba(255,255,255,.6);font-weight:600;letter-spacing:.06em;text-transform:uppercase}
+.ac-body{background:var(--bg3);padding:14px 18px 16px}
+.ac-fn-label{font-size:9px;font-weight:800;letter-spacing:.1em;text-transform:uppercase;color:var(--muted);margin-bottom:8px}
+.ac-fns{display:flex;flex-direction:column;gap:6px}
+.ac-fn{display:flex;align-items:center;gap:8px;font-size:11px;color:var(--text);padding:6px 8px;border-radius:7px;background:rgba(255,255,255,.04)}
+.ac-fn-dot{width:6px;height:6px;border-radius:50%;flex-shrink:0}
+.afd-s{background:var(--c1)} .afd-e{background:var(--c2)} .afd-f{background:var(--c5)}
+.ac-chips{display:flex;flex-wrap:wrap;gap:5px;margin-top:10px;padding-top:10px;border-top:1px solid var(--border)}
+.ac-chip{font-size:9.5px;font-weight:700;padding:3px 9px;border-radius:50px;border:1px solid}
+.chip-s{color:var(--c1);border-color:rgba(59,130,246,.3);background:rgba(59,130,246,.08)}
+.chip-e{color:var(--c2);border-color:rgba(16,185,129,.3);background:rgba(16,185,129,.08)}
+.chip-f{color:var(--c5);border-color:rgba(139,92,246,.3);background:rgba(139,92,246,.08)}
+
+/* Exercise flow table */
+.flow-wrap{max-width:960px;margin:0 auto;background:var(--bg3);border-radius:14px;border:1px solid var(--border);overflow:hidden}
+.flow-title{padding:16px 24px;display:flex;align-items:center;gap:10px;border-bottom:1px solid var(--border)}
+.flow-title h3{font-size:13px;font-weight:800;color:var(--white);text-transform:uppercase;letter-spacing:.07em}
+.flow-legend{display:flex;gap:16px;margin-left:auto;flex-wrap:wrap}
+.fl-item{display:flex;align-items:center;gap:6px;font-size:10.5px;color:var(--muted);font-weight:600}
+.fl-dot{width:10px;height:10px;border-radius:3px}
+.phase-table{width:100%;border-collapse:collapse}
+.phase-table th{padding:10px 14px;font-size:9.5px;font-weight:800;letter-spacing:.1em;text-transform:uppercase;text-align:left;border-bottom:1px solid var(--border);color:var(--muted);background:rgba(255,255,255,.03)}
+.phase-table th.th0{width:200px}
+.phase-row{cursor:pointer;transition:background .2s}
+.phase-row:hover{background:rgba(255,255,255,.04)}
+.phase-row.active-row td{background:rgba(59,130,246,.06)}
+.phase-row td{padding:12px 14px;border-bottom:1px solid rgba(255,255,255,.05);vertical-align:top}
+.phase-row:last-child td{border-bottom:none}
+.ph-name{display:flex;align-items:flex-start;gap:9px}
+.ph-num{width:24px;height:24px;border-radius:50%;background:rgba(255,255,255,.1);color:var(--white);font-size:10px;font-weight:800;display:flex;align-items:center;justify-content:center;flex-shrink:0;margin-top:1px}
+.ph-name h4{font-size:11.5px;font-weight:700;color:var(--white);margin-bottom:2px}
+.ph-name p{font-size:9.5px;color:var(--muted);line-height:1.4}
+.ph-method{display:inline-flex;align-items:center;gap:4px;background:rgba(245,158,11,.12);border:1px solid rgba(245,158,11,.3);border-radius:50px;padding:2px 9px;font-size:9px;font-weight:700;color:var(--c3);margin-top:6px}
+.actor-cell{font-size:10.5px;color:var(--text);line-height:1.55}
+.a-chip{display:inline-block;padding:2px 8px;border-radius:50px;font-size:9.5px;font-weight:700;margin:2px 2px 2px 0;border:1px solid}
+.ibar{height:4px;border-radius:3px;background:rgba(255,255,255,.08);overflow:hidden;margin-top:6px}
+.ibar-fill{height:100%;border-radius:3px;width:0%;transition:width 1.3s cubic-bezier(.4,0,.2,1)}
+.if-s{background:linear-gradient(90deg,var(--c1),#60a5fa)}
+.if-e{background:linear-gradient(90deg,var(--c2),#34d399)}
+.if-f{background:linear-gradient(90deg,var(--c5),#a78bfa)}
+.pct{font-size:8.5px;color:var(--muted);margin-top:2px}
+.phase-detail-row{display:none}
+.phase-detail-row.open{display:table-row}
+.pd-cell{padding:12px 16px 14px 42px!important;background:rgba(59,130,246,.05)!important;border-bottom:1px solid rgba(59,130,246,.15)!important}
+.pd-inner h5{font-size:11px;font-weight:700;color:var(--c1);margin-bottom:6px}
+.pd-inner ul{padding-left:14px;display:flex;flex-direction:column;gap:4px;font-size:11px;color:var(--muted);line-height:1.6}
+.expand-tip{font-size:9px;color:rgba(255,255,255,.25);margin-top:5px;letter-spacing:.03em}
+
+/* Actor modal */
+.amodal-ov{position:fixed;inset:0;z-index:999;background:rgba(13,17,23,.7);backdrop-filter:blur(6px);display:flex;align-items:center;justify-content:center;opacity:0;pointer-events:none;transition:opacity .3s}
+.amodal-ov.open{opacity:1;pointer-events:all}
+.amodal-box{background:var(--bg2);border-radius:18px;width:460px;max-width:93vw;box-shadow:0 32px 80px rgba(0,0,0,.4);overflow:hidden;transform:scale(.9) translateY(18px);transition:transform .35s cubic-bezier(.34,1.56,.64,1);border:1px solid var(--border)}
+.amodal-ov.open .amodal-box{transform:scale(1) translateY(0)}
+.amodal-top{padding:26px 26px 20px;position:relative}
+.amodal-cls{position:absolute;top:14px;right:14px;width:28px;height:28px;border-radius:50%;background:rgba(255,255,255,.1);border:none;cursor:pointer;font-size:13px;color:var(--muted);display:flex;align-items:center;justify-content:center;transition:background .2s}
+.amodal-cls:hover{background:rgba(255,255,255,.2);color:#fff}
+.amodal-emoji{font-size:30px;display:block;margin-bottom:10px}
+.amodal-title{font-size:17px;font-weight:800;color:#fff;margin-bottom:5px}
+.amodal-desc{font-size:12.5px;color:rgba(255,255,255,.75);line-height:1.65;font-weight:400}
+.amodal-body{padding:16px 26px 24px}
+.amodal-list{list-style:none;display:flex;flex-direction:column;gap:8px}
+.amodal-list li{display:flex;align-items:flex-start;gap:9px;font-size:12px;color:var(--muted);padding:9px 12px;background:rgba(255,255,255,.04);border-radius:8px;line-height:1.55}
+.amodal-list li span{font-weight:800;flex-shrink:0}
+
+/* ── FOOTER ────────────────────────── */
+.site-footer{text-align:center;padding:20px 40px;font-size:10.5px;color:var(--muted);background:var(--bg);border-top:1px solid var(--border)}
+
+/* ── RESPONSIVE ─────────────────────── */
+@media(max-width:900px){
+  .skills-grid{grid-template-columns:1fr}
+  .actors-grid{grid-template-columns:1fr}
+  .vs-divider{display:none}
+}
+@media(max-width:768px){
+  .site-header{padding:32px 20px 0}
+  .site-header h1{font-size:26px}
+  .tabs{gap:2px;overflow-x:auto;padding-bottom:0;justify-content:flex-start}
+  .tab-btn{padding:10px 16px;font-size:11px}
+  .tab-panel{padding:28px 16px 44px}
+  .panel-intro h2{font-size:21px}
+  .phase-table thead{display:none}
+  .phase-table,.phase-table tbody,.phase-row,.phase-row td{display:block;width:100%}
+  .phase-row td{padding:10px 14px;border-bottom:none}
+  .phase-row td:last-child{border-bottom:1px solid rgba(255,255,255,.05);padding-bottom:14px}
+  .phase-detail-row,.phase-detail-row.open{display:block}
+  .pd-cell{padding:10px 14px 14px!important}
+}
+@media(max-width:480px){
+  .site-header h1{font-size:22px}
+  .tab-btn .tab-label{display:none}
+  .tab-btn{padding:10px 14px}
+  .actors-grid{grid-template-columns:1fr}
+}
+</style>
+</head>
+<body>
+
+<!-- ══ HEADER ════════════════════════════ -->
+<div class="site-header">
+  <div class="hdr-glow"></div>
+  <div class="hdr-inner">
+    <div class="hdr-badge">
+      <svg width="10" height="10" viewBox="0 0 24 24" fill="none"><path d="M12 2l3 6.3L22 9.3l-5 4.9 1.2 6.8L12 17.8l-6.2 3.2L7 14.2 2 9.3l7-.7L12 2z" stroke="currentColor" stroke-width="2" stroke-linejoin="round"/></svg>
+      Perfil Integral · Enfoque Universal
+    </div>
+    <h1>El <em>Líder</em> de Prospectiva</h1>
+    <p>Caracterización, competencias y roles dentro del ejercicio prospectivo — aplicable a cualquier sector y contexto</p>
+  </div>
+
+  <!-- TABS -->
+  <div class="tabs">
+    <button class="tab-btn active" onclick="switchTab(0)">
+      <div class="t-num">2</div>
+      <span class="tab-label">🗺️ Mapa Mental — Caracterización</span>
+    </button>
+    <button class="tab-btn" onclick="switchTab(1)">
+      <div class="t-num">3</div>
+      <span class="tab-label">⚡ Competencias Hard vs. Soft</span>
+    </button>
+    <button class="tab-btn" onclick="switchTab(2)">
+      <div class="t-num">4</div>
+      <span class="tab-label">🏛️ Actores en el Ejercicio</span>
+    </button>
+  </div>
+</div>
+
+<!-- ══ CONTENT ════════════════════════════ -->
+<div class="content">
+
+  <!-- ─ TAB 1: MAPA MENTAL ────────── -->
+  <div class="tab-panel active" id="panel-0">
+    <div class="panel-intro rv">
+      <h2>Mapa Mental — <em>¿Quién es?</em></h2>
+      <p>Caracterización universal del Líder de Prospectiva. Haz clic en cualquier rama para explorar cada dimensión en detalle.</p>
+    </div>
+
+    <div class="map-legend rv">
+      <div class="ml-item" onclick="showMapDetail(0)"><div class="ml-dot" style="background:#3b82f6"></div>🧭 Identidad</div>
+      <div class="ml-item" onclick="showMapDetail(1)"><div class="ml-dot" style="background:#10b981"></div>🧠 Mentalidad</div>
+      <div class="ml-item" onclick="showMapDetail(2)"><div class="ml-dot" style="background:#f59e0b"></div>🎓 Formación</div>
+      <div class="ml-item" onclick="showMapDetail(3)"><div class="ml-dot" style="background:#f43f5e"></div>⚡ Rol</div>
+      <div class="ml-item" onclick="showMapDetail(4)"><div class="ml-dot" style="background:#8b5cf6"></div>✨ Atributos</div>
+      <div class="ml-item" onclick="showMapDetail(5)"><div class="ml-dot" style="background:#06b6d4"></div>🌐 Contexto</div>
+    </div>
+
+    <svg id="mindmap" viewBox="0 0 1000 700" xmlns="http://www.w3.org/2000/svg">
+      <defs>
+        <filter id="gc"><feGaussianBlur stdDeviation="10" result="b"/><feMerge><feMergeNode in="b"/><feMergeNode in="SourceGraphic"/></feMerge></filter>
+        <filter id="gn"><feGaussianBlur stdDeviation="4" result="b"/><feMerge><feMergeNode in="b"/><feMergeNode in="SourceGraphic"/></feMerge></filter>
+        <linearGradient id="g1" x1="0%" y1="0%" x2="100%" y2="100%"><stop offset="0%" stop-color="#1d4ed8"/><stop offset="100%" stop-color="#3b82f6"/></linearGradient>
+        <linearGradient id="g2" x1="0%" y1="0%" x2="100%" y2="100%"><stop offset="0%" stop-color="#059669"/><stop offset="100%" stop-color="#10b981"/></linearGradient>
+        <linearGradient id="g3" x1="0%" y1="0%" x2="100%" y2="100%"><stop offset="0%" stop-color="#b45309"/><stop offset="100%" stop-color="#f59e0b"/></linearGradient>
+        <linearGradient id="g4" x1="0%" y1="0%" x2="100%" y2="100%"><stop offset="0%" stop-color="#be123c"/><stop offset="100%" stop-color="#f43f5e"/></linearGradient>
+        <linearGradient id="g5" x1="0%" y1="0%" x2="100%" y2="100%"><stop offset="0%" stop-color="#5b21b6"/><stop offset="100%" stop-color="#8b5cf6"/></linearGradient>
+        <linearGradient id="g6" x1="0%" y1="0%" x2="100%" y2="100%"><stop offset="0%" stop-color="#0e7490"/><stop offset="100%" stop-color="#06b6d4"/></linearGradient>
+      </defs>
+
+      <!-- Main lines -->
+      <path id="ml1" class="branch-line" d="M500 350 Q390 285 265 205" stroke="#3b82f6"/>
+      <path id="ml2" class="branch-line" d="M500 330 Q500 245 500 155" stroke="#10b981"/>
+      <path id="ml3" class="branch-line" d="M520 340 Q630 275 740 205" stroke="#f59e0b"/>
+      <path id="ml4" class="branch-line" d="M530 380 Q645 420 755 475" stroke="#f43f5e"/>
+      <path id="ml5" class="branch-line" d="M500 395 Q500 470 500 545" stroke="#8b5cf6"/>
+      <path id="ml6" class="branch-line" d="M470 380 Q360 425 250 475" stroke="#06b6d4"/>
+
+      <!-- Sub lines branch 1 -->
+      <path id="sl1a" class="sub-line" d="M265 205 Q195 180 118 168" stroke="#3b82f6"/>
+      <path id="sl1b" class="sub-line" d="M265 205 Q190 232 118 238" stroke="#3b82f6"/>
+      <path id="sl1c" class="sub-line" d="M265 205 Q200 155 130 128" stroke="#3b82f6"/>
+      <!-- Sub lines branch 2 -->
+      <path id="sl2a" class="sub-line" d="M500 155 Q432 132 355 118" stroke="#10b981"/>
+      <path id="sl2b" class="sub-line" d="M500 155 Q500 100 500 60" stroke="#10b981"/>
+      <path id="sl2c" class="sub-line" d="M500 155 Q568 132 638 118" stroke="#10b981"/>
+      <!-- Sub lines branch 3 -->
+      <path id="sl3a" class="sub-line" d="M740 205 Q808 180 878 168" stroke="#f59e0b"/>
+      <path id="sl3b" class="sub-line" d="M740 205 Q808 232 878 238" stroke="#f59e0b"/>
+      <path id="sl3c" class="sub-line" d="M740 205 Q800 155 866 128" stroke="#f59e0b"/>
+      <!-- Sub lines branch 4 -->
+      <path id="sl4a" class="sub-line" d="M755 475 Q815 452 884 440" stroke="#f43f5e"/>
+      <path id="sl4b" class="sub-line" d="M755 475 Q818 500 888 510" stroke="#f43f5e"/>
+      <path id="sl4c" class="sub-line" d="M755 475 Q812 536 874 555" stroke="#f43f5e"/>
+      <!-- Sub lines branch 5 -->
+      <path id="sl5a" class="sub-line" d="M500 545 Q434 566 362 578" stroke="#8b5cf6"/>
+      <path id="sl5b" class="sub-line" d="M500 545 Q500 598 500 640" stroke="#8b5cf6"/>
+      <path id="sl5c" class="sub-line" d="M500 545 Q566 566 634 578" stroke="#8b5cf6"/>
+      <!-- Sub lines branch 6 -->
+      <path id="sl6a" class="sub-line" d="M250 475 Q186 452 116 440" stroke="#06b6d4"/>
+      <path id="sl6b" class="sub-line" d="M250 475 Q186 500 118 510" stroke="#06b6d4"/>
+      <path id="sl6c" class="sub-line" d="M250 475 Q188 536 122 555" stroke="#06b6d4"/>
+
+      <!-- CENTER -->
+      <g filter="url(#gc)">
+        <circle cx="500" cy="365" r="70" fill="rgba(245,158,11,.1)"/>
+        <circle cx="500" cy="365" r="58" fill="#111820" stroke="#f59e0b" stroke-width="2"/>
+        <text x="500" y="355" text-anchor="middle" font-family="Nunito" font-size="11" font-weight="800" fill="#f59e0b" letter-spacing="1">LÍDER DE</text>
+        <text x="500" y="373" text-anchor="middle" font-family="Playfair Display,serif" font-size="14" font-style="italic" fill="#fff">Prospectiva</text>
+        <text x="500" y="390" text-anchor="middle" font-family="Nunito" font-size="8.5" fill="rgba(255,255,255,.4)">Arquitecto de Futuros</text>
+      </g>
+
+      <!-- BRANCH 1: IDENTIDAD -->
+      <g class="branch-group" onclick="showMapDetail(0)">
+        <rect class="b-rect" x="192" y="186" width="144" height="38" rx="19" fill="url(#g1)" filter="url(#gn)"/>
+        <text x="264" y="200" text-anchor="middle" font-family="Nunito" font-size="11" font-weight="800" fill="#fff">🧭 Identidad</text>
+        <text x="264" y="216" text-anchor="middle" font-family="Nunito" font-size="8.5" fill="rgba(255,255,255,.65)">¿Quién es?</text>
+        <rect class="l-rect" x="24" y="153" width="96" height="28" rx="14" fill="#1d4ed8" opacity=".65"/>
+        <text x="72" y="172" text-anchor="middle" font-family="Nunito" font-size="9.5" font-weight="700" fill="#bfdbfe">Visionario</text>
+        <rect class="l-rect" x="24" y="224" width="96" height="28" rx="14" fill="#1d4ed8" opacity=".65"/>
+        <text x="72" y="243" text-anchor="middle" font-family="Nunito" font-size="9.5" font-weight="700" fill="#bfdbfe">Copiloto del futuro</text>
+        <rect class="l-rect" x="30" y="114" width="102" height="28" rx="14" fill="#1d4ed8" opacity=".65"/>
+        <text x="81" y="133" text-anchor="middle" font-family="Nunito" font-size="9.5" font-weight="700" fill="#bfdbfe">Arq. de sistemas</text>
+      </g>
+
+      <!-- BRANCH 2: MENTALIDAD -->
+      <g class="branch-group" onclick="showMapDetail(1)">
+        <rect class="b-rect" x="424" y="136" width="152" height="38" rx="19" fill="url(#g2)" filter="url(#gn)"/>
+        <text x="500" y="150" text-anchor="middle" font-family="Nunito" font-size="11" font-weight="800" fill="#fff">🧠 Mentalidad</text>
+        <text x="500" y="167" text-anchor="middle" font-family="Nunito" font-size="8.5" fill="rgba(255,255,255,.65)">¿Cómo piensa?</text>
+        <rect class="l-rect" x="272" y="104" width="85" height="28" rx="14" fill="#059669" opacity=".65"/>
+        <text x="314" y="123" text-anchor="middle" font-family="Nunito" font-size="9.5" font-weight="700" fill="#a7f3d0">Pens. sistémico</text>
+        <rect class="l-rect" x="458" y="46" width="85" height="28" rx="14" fill="#059669" opacity=".65"/>
+        <text x="500" y="65" text-anchor="middle" font-family="Nunito" font-size="9.5" font-weight="700" fill="#a7f3d0">Anticipatorio</text>
+        <rect class="l-rect" x="638" y="104" width="102" height="28" rx="14" fill="#059669" opacity=".65"/>
+        <text x="689" y="123" text-anchor="middle" font-family="Nunito" font-size="9.5" font-weight="700" fill="#a7f3d0">Tol. incertidumbre</text>
+      </g>
+
+      <!-- BRANCH 3: FORMACIÓN -->
+      <g class="branch-group" onclick="showMapDetail(2)">
+        <rect class="b-rect" x="666" y="186" width="148" height="38" rx="19" fill="url(#g3)" filter="url(#gn)"/>
+        <text x="740" y="200" text-anchor="middle" font-family="Nunito" font-size="11" font-weight="800" fill="#fff">🎓 Formación</text>
+        <text x="740" y="216" text-anchor="middle" font-family="Nunito" font-size="8.5" fill="rgba(255,255,255,.65)">¿Qué sabe?</text>
+        <rect class="l-rect" x="782" y="154" width="108" height="28" rx="14" fill="#b45309" opacity=".65"/>
+        <text x="836" y="173" text-anchor="middle" font-family="Nunito" font-size="9.5" font-weight="700" fill="#fef3c7">Multidisciplinar</text>
+        <rect class="l-rect" x="782" y="224" width="108" height="28" rx="14" fill="#b45309" opacity=".65"/>
+        <text x="836" y="243" text-anchor="middle" font-family="Nunito" font-size="9.5" font-weight="700" fill="#fef3c7">Posgrado / Cert.</text>
+        <rect class="l-rect" x="780" y="114" width="108" height="28" rx="14" fill="#b45309" opacity=".65"/>
+        <text x="834" y="133" text-anchor="middle" font-family="Nunito" font-size="9.5" font-weight="700" fill="#fef3c7">Experiencia verificada</text>
+      </g>
+
+      <!-- BRANCH 4: ROL -->
+      <g class="branch-group" onclick="showMapDetail(3)">
+        <rect class="b-rect" x="684" y="456" width="142" height="38" rx="19" fill="url(#g4)" filter="url(#gn)"/>
+        <text x="755" y="470" text-anchor="middle" font-family="Nunito" font-size="11" font-weight="800" fill="#fff">⚡ Rol</text>
+        <text x="755" y="487" text-anchor="middle" font-family="Nunito" font-size="8.5" fill="rgba(255,255,255,.65)">¿Qué hace?</text>
+        <rect class="l-rect" x="888" y="426" width="110" height="28" rx="14" fill="#be123c" opacity=".65"/>
+        <text x="943" y="445" text-anchor="middle" font-family="Nunito" font-size="9.5" font-weight="700" fill="#fecdd3">Traduce datos</text>
+        <rect class="l-rect" x="892" y="496" width="108" height="28" rx="14" fill="#be123c" opacity=".65"/>
+        <text x="946" y="515" text-anchor="middle" font-family="Nunito" font-size="9.5" font-weight="700" fill="#fecdd3">Construye escenarios</text>
+        <rect class="l-rect" x="878" y="541" width="110" height="28" rx="14" fill="#be123c" opacity=".65"/>
+        <text x="933" y="560" text-anchor="middle" font-family="Nunito" font-size="9.5" font-weight="700" fill="#fecdd3">Gestiona consenso</text>
+      </g>
+
+      <!-- BRANCH 5: ATRIBUTOS -->
+      <g class="branch-group" onclick="showMapDetail(4)">
+        <rect class="b-rect" x="424" y="526" width="152" height="38" rx="19" fill="url(#g5)" filter="url(#gn)"/>
+        <text x="500" y="540" text-anchor="middle" font-family="Nunito" font-size="11" font-weight="800" fill="#fff">✨ Atributos</text>
+        <text x="500" y="557" text-anchor="middle" font-family="Nunito" font-size="8.5" fill="rgba(255,255,255,.65)">¿Qué lo define?</text>
+        <rect class="l-rect" x="296" y="564" width="92" height="28" rx="14" fill="#5b21b6" opacity=".65"/>
+        <text x="342" y="583" text-anchor="middle" font-family="Nunito" font-size="9.5" font-weight="700" fill="#ede9fe">Conocimiento</text>
+        <rect class="l-rect" x="454" y="626" width="92" height="28" rx="14" fill="#5b21b6" opacity=".65"/>
+        <text x="500" y="645" text-anchor="middle" font-family="Nunito" font-size="9.5" font-weight="700" fill="#ede9fe">Capacidades</text>
+        <rect class="l-rect" x="614" y="564" width="92" height="28" rx="14" fill="#5b21b6" opacity=".65"/>
+        <text x="660" y="583" text-anchor="middle" font-family="Nunito" font-size="9.5" font-weight="700" fill="#ede9fe">Habilidades</text>
+      </g>
+
+      <!-- BRANCH 6: CONTEXTO -->
+      <g class="branch-group" onclick="showMapDetail(5)">
+        <rect class="b-rect" x="178" y="456" width="144" height="38" rx="19" fill="url(#g6)" filter="url(#gn)"/>
+        <text x="250" y="470" text-anchor="middle" font-family="Nunito" font-size="11" font-weight="800" fill="#fff">🌐 Contexto</text>
+        <text x="250" y="487" text-anchor="middle" font-family="Nunito" font-size="8.5" fill="rgba(255,255,255,.65)">¿Dónde actúa?</text>
+        <rect class="l-rect" x="20" y="426" width="98" height="28" rx="14" fill="#0e7490" opacity=".65"/>
+        <text x="69" y="445" text-anchor="middle" font-family="Nunito" font-size="9.5" font-weight="700" fill="#cffafe">Sector público</text>
+        <rect class="l-rect" x="20" y="496" width="100" height="28" rx="14" fill="#0e7490" opacity=".65"/>
+        <text x="70" y="515" text-anchor="middle" font-family="Nunito" font-size="9.5" font-weight="700" fill="#cffafe">Empresa privada</text>
+        <rect class="l-rect" x="22" y="541" width="102" height="28" rx="14" fill="#0e7490" opacity=".65"/>
+        <text x="73" y="560" text-anchor="middle" font-family="Nunito" font-size="9.5" font-weight="700" fill="#cffafe">Academia / Sociedad civil</text>
+      </g>
+    </svg>
+
+    <!-- Map detail panel -->
+    <div class="map-detail" id="map-detail">
+      <div class="md-top">
+        <div class="md-emoji" id="md-emoji"></div>
+        <div class="md-meta"><h3 id="md-title"></h3><p id="md-sub"></p></div>
+        <button class="md-close" onclick="closeMapDetail()">✕</button>
+      </div>
+      <div class="md-grid" id="md-grid"></div>
+    </div>
+  </div>
+
+  <!-- ─ TAB 2: COMPETENCIAS ───────── -->
+  <div class="tab-panel" id="panel-1">
+    <div class="panel-intro rv">
+      <h2>Competencias — <em>Hard vs. Soft Skills</em></h2>
+      <p>El Líder de Prospectiva domina dos dimensiones complementarias: el rigor técnico y la inteligencia humana. Ambas son indispensables.</p>
+    </div>
+
+    <div class="skills-wrap">
+      <div class="skills-grid">
+        <!-- HARD SKILLS -->
+        <div class="sk-card rv d1">
+          <div class="sk-head sk-head-b">
+            <div class="sk-icon">⚙️</div>
+            <div><div class="sk-title">Competencias Técnicas</div><div class="sk-sub">Hard Skills — Rigor metodológico y científico</div></div>
+          </div>
+          <div class="sk-body">
+            <div class="sk-item sk-item-b"><div class="sk-dot sd-b">🔬</div><div class="sk-text"><h5>Análisis Estructural (Micmac)</h5><p>Modelado matemático para identificar variables clave e interrelaciones sistémicas del entorno.</p></div></div>
+            <div class="sk-item sk-item-b"><div class="sk-dot sd-b">🎭</div><div class="sk-text"><h5>Análisis de Actores (Mactor)</h5><p>Mapeo de relaciones de poder, convergencias y divergencias entre actores del sistema.</p></div></div>
+            <div class="sk-item sk-item-b"><div class="sk-dot sd-b">🧠</div><div class="sk-text"><h5>Método Delphi / Ábaco de Regnier</h5><p>Gestión de consultas expertas y procesamiento de consensos cualitativos con anonimato.</p></div></div>
+            <div class="sk-item sk-item-b"><div class="sk-dot sd-b">📊</div><div class="sk-text"><h5>Ciencia de Datos y Big Data</h5><p>Uso de IA y análisis avanzado para detectar señales débiles y patrones de cambio emergentes.</p></div></div>
+            <div class="sk-item sk-item-b"><div class="sk-dot sd-b">🗺️</div><div class="sk-text"><h5>Construcción de Escenarios</h5><p>Diseño de futuros posibles, probables y deseables mediante metodologías estructuradas.</p></div></div>
+            <div class="sk-item sk-item-b"><div class="sk-dot sd-b">🏛️</div><div class="sk-text"><h5>Especialización Sectorial</h5><p>Conocimientos en economía, estadística, políticas públicas y áreas de impacto del estudio.</p></div></div>
+            <div class="sk-item sk-item-b"><div class="sk-dot sd-b">📡</div><div class="sk-text"><h5>Vigilancia Estratégica</h5><p>Monitoreo sistemático del entorno para detectar tendencias, disrupciones y oportunidades.</p></div></div>
+            <div class="sk-item sk-item-b"><div class="sk-dot sd-b">💼</div><div class="sk-text"><h5>Gestión de Proyectos Estratégicos</h5><p>Planificación, coordinación y evaluación de ejercicios prospectivos de principio a fin.</p></div></div>
+          </div>
+        </div>
+
+        <!-- SOFT SKILLS -->
+        <div class="sk-card rv d2">
+          <div class="sk-head sk-head-a">
+            <div class="sk-icon">🌟</div>
+            <div><div class="sk-title">Competencias Transversales</div><div class="sk-sub">Soft Skills — Inteligencia humana y gestión del cambio</div></div>
+          </div>
+          <div class="sk-body">
+            <div class="sk-item sk-item-a"><div class="sk-dot sd-a">🤝</div><div class="sk-text"><h5>Liderazgo de Equipos</h5><p>Coordinar grupos heterogéneos y multidisciplinarios bajo una visión compartida de largo plazo.</p></div></div>
+            <div class="sk-item sk-item-a"><div class="sk-dot sd-a">💬</div><div class="sk-text"><h5>Inteligencia Comunicacional</h5><p>Transmitir hallazgos complejos de forma clara, ejecutable y adaptada a distintas audiencias.</p></div></div>
+            <div class="sk-item sk-item-a"><div class="sk-dot sd-a">🔄</div><div class="sk-text"><h5>Gestión del Consenso</h5><p>Facilitar acuerdos entre actores con intereses distintos, transformando la reflexión en compromiso.</p></div></div>
+            <div class="sk-item sk-item-a"><div class="sk-dot sd-a">💡</div><div class="sk-text"><h5>Pensamiento Lateral</h5><p>Cuestionar supuestos y diseñar soluciones disruptivas fuera de los marcos convencionales.</p></div></div>
+            <div class="sk-item sk-item-a"><div class="sk-dot sd-a">🌊</div><div class="sk-text"><h5>Adaptabilidad y Resiliencia</h5><p>Ajustar la estrategia ante eventos inesperados ("cisnes negros") sin perder el rumbo de largo plazo.</p></div></div>
+            <div class="sk-item sk-item-a"><div class="sk-dot sd-a">❤️</div><div class="sk-text"><h5>Sensibilidad Social y Empatía</h5><p>Comprender las necesidades de distintos actores y facilitar el diálogo intersectorial efectivo.</p></div></div>
+            <div class="sk-item sk-item-a"><div class="sk-dot sd-a">🛡️</div><div class="sk-text"><h5>Pensamiento Crítico Anti-Sesgo</h5><p>Identificar y neutralizar sesgos cognitivos y estereotipos que distorsionan la visión del futuro.</p></div></div>
+            <div class="sk-item sk-item-a"><div class="sk-dot sd-a">🎯</div><div class="sk-text"><h5>Orientación a la Acción</h5><p>Garantizar que la prospectiva culmina en decisiones concretas y planes de implementación viables.</p></div></div>
+          </div>
+        </div>
+      </div>
+
+      <!-- VS Banner -->
+      <div style="text-align:center;margin-top:20px;padding:16px">
+        <div style="display:inline-flex;align-items:center;gap:16px;background:var(--bg3);border:1px solid var(--border);border-radius:50px;padding:10px 24px">
+          <span style="font-size:12px;color:var(--c1);font-weight:700">⚙️ Técnicas</span>
+          <span style="font-size:11px;color:var(--muted)">+</span>
+          <span style="background:var(--c3);color:#000;font-size:11px;font-weight:900;padding:4px 14px;border-radius:50px">HIBRIDACIÓN</span>
+          <span style="font-size:11px;color:var(--muted)">+</span>
+          <span style="font-size:12px;color:var(--c3);font-weight:700">🌟 Transversales</span>
+        </div>
+        <p style="font-size:11px;color:var(--muted);margin-top:10px">El dominio técnico sin inteligencia humana es estéril — y viceversa. La hibridación es lo que define al estratega senior.</p>
+      </div>
+    </div>
+  </div>
+
+  <!-- ─ TAB 3: ACTORES ────────────── -->
+  <div class="tab-panel" id="panel-2">
+    <div class="panel-intro rv">
+      <h2>Actores en el <em>Ejercicio Prospectivo</em></h2>
+      <p>Tres roles coordinados movilizan la "Reserva de Inteligencia". Haz clic en cada tarjeta para ver su función en detalle.</p>
+    </div>
+
+    <!-- Actor cards -->
+    <div class="actors-grid">
+      <div class="ac-card rv d1" onclick="showActorModal('stake')">
+        <div class="ac-top act-s"><div class="ac-deco"></div>
+          <span class="ac-emoji">🏛️</span>
+          <h3>Stakeholders</h3><div class="ac-role">Interesados y tomadores de decisión</div>
+        </div>
+        <div class="ac-body">
+          <div class="ac-fn-label">Funciones clave</div>
+          <div class="ac-fns">
+            <div class="ac-fn"><div class="ac-fn-dot afd-s"></div>Transformar escenarios en política pública</div>
+            <div class="ac-fn"><div class="ac-fn-dot afd-s"></div>Comprometerse con los resultados</div>
+            <div class="ac-fn"><div class="ac-fn-dot afd-s"></div>Aprobar y financiar el ejercicio</div>
+          </div>
+          <div class="ac-chips">
+            <span class="ac-chip chip-s">Gobierno</span><span class="ac-chip chip-s">Empresarios</span><span class="ac-chip chip-s">ONG</span><span class="ac-chip chip-s">Ciudadanía</span>
+          </div>
+        </div>
+      </div>
+      <div class="ac-card rv d2" onclick="showActorModal('experto')">
+        <div class="ac-top act-e"><div class="ac-deco"></div>
+          <span class="ac-emoji">🔍</span>
+          <h3>Expertos</h3><div class="ac-role">Reserva de inteligencia del sistema</div>
+        </div>
+        <div class="ac-body">
+          <div class="ac-fn-label">Funciones clave</div>
+          <div class="ac-fns">
+            <div class="ac-fn"><div class="ac-fn-dot afd-e"></div>Identificar fuerzas directoras (STEEPV)</div>
+            <div class="ac-fn"><div class="ac-fn-dot afd-e"></div>Localizar puntos de bifurcación</div>
+            <div class="ac-fn"><div class="ac-fn-dot afd-e"></div>Aportar conocimiento especializado</div>
+          </div>
+          <div class="ac-chips">
+            <span class="ac-chip chip-e">Intencionales</span><span class="ac-chip chip-e">Arquetipo</span><span class="ac-chip chip-e">Contenido</span><span class="ac-chip chip-e">Herramientas</span>
+          </div>
+        </div>
+      </div>
+      <div class="ac-card rv d3" onclick="showActorModal('facil')">
+        <div class="ac-top act-f"><div class="ac-deco"></div>
+          <span class="ac-emoji">⚖️</span>
+          <h3>Facilitadores</h3><div class="ac-role">Guardianes del rigor metodológico</div>
+        </div>
+        <div class="ac-body">
+          <div class="ac-fn-label">Funciones clave</div>
+          <div class="ac-fns">
+            <div class="ac-fn"><div class="ac-fn-dot afd-f"></div>Gestionar logística técnica del ejercicio</div>
+            <div class="ac-fn"><div class="ac-fn-dot afd-f"></div>Validar cuestionarios y mediar análisis</div>
+            <div class="ac-fn"><div class="ac-fn-dot afd-f"></div>Resolver dudas metodológicas del equipo</div>
+          </div>
+          <div class="ac-chips">
+            <span class="ac-chip chip-f">Coordinadores</span><span class="ac-chip chip-f">Metodólogos</span><span class="ac-chip chip-f">Moderadores</span>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Exercise Flow Table -->
+    <div class="flow-wrap rv" style="margin-top:28px">
+      <div class="flow-title">
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="none"><path d="M9 18l6-6-6-6" stroke="#f59e0b" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+        <h3>Fases del ejercicio prospectivo</h3>
+        <div class="flow-legend">
+          <div class="fl-item"><div class="fl-dot" style="background:var(--c1)"></div>🏛️ Stakeholders</div>
+          <div class="fl-item"><div class="fl-dot" style="background:var(--c2)"></div>🔍 Expertos</div>
+          <div class="fl-item"><div class="fl-dot" style="background:var(--c5)"></div>⚖️ Facilitadores</div>
+          <span style="font-size:9.5px;color:var(--muted)">▼ Clic para detalle</span>
+        </div>
+      </div>
+      <table class="phase-table">
+        <thead><tr>
+          <th class="th0">Fase</th>
+          <th>🏛️ Stakeholders</th>
+          <th>🔍 Expertos</th>
+          <th>⚖️ Facilitadores</th>
+        </tr></thead>
+        <tbody id="phase-body"></tbody>
+      </table>
+    </div>
+  </div>
+
+</div><!-- /content -->
+
+<!-- ACTOR MODAL -->
+<div class="amodal-ov" id="amodal"><div class="amodal-box">
+  <div class="amodal-top" id="amt">
+    <button class="amodal-cls" onclick="closeActorModal()">✕</button>
+    <span class="amodal-emoji" id="ame"></span>
+    <div class="amodal-title" id="amt-title"></div>
+    <div class="amodal-desc"  id="amt-desc"></div>
+  </div>
+  <div class="amodal-body"><ul class="amodal-list" id="aml"></ul></div>
+</div></div>
+
+<div class="site-footer">
+  Líder de Prospectiva · Caracterización · Competencias · Actores en el Ejercicio Prospectivo · Perfil Universal
+</div>
+
+<script>
+/* ══ TAB SWITCHING ══════════════════ */
+function switchTab(idx){
+  document.querySelectorAll('.tab-btn').forEach((b,i)=>b.classList.toggle('active',i===idx));
+  document.querySelectorAll('.tab-panel').forEach((p,i)=>p.classList.toggle('active',i===idx));
+  // animate lines on tab 0
+  if(idx===0) setTimeout(drawLines,100);
+  // animate bars on tab 2
+  if(idx===2) setTimeout(animBars,200);
+}
+
+/* ══ MIND MAP DATA ══════════════════ */
+const mapData=[
+  {icon:'🧭',title:'Identidad',sub:'¿Quién es el Líder de Prospectiva?',color:'#1d4ed8',cards:[
+    {i:'🌅',h:'Visionario estratégico',p:'Percibe tendencias antes que los demás y convierte señales débiles en oportunidades de largo plazo.'},
+    {i:'✈️',h:'Copiloto del futuro',p:'Acompaña a los tomadores de decisión orientando la ruta sin sustituir su autoridad. Rol técnico y estratégico.'},
+    {i:'🏗️',h:'Arquitecto de sistemas',p:'Diseña la estructura del ejercicio: actores, herramientas, fases y entregables con rigor metodológico.'},
+    {i:'🔦',h:'Centinela anti-sesgo',p:'Neutraliza las falsas certidumbres, estereotipos y sesgos cognitivos que distorsionan la visión del futuro.'},
+  ]},
+  {icon:'🧠',title:'Mentalidad',sub:'¿Cómo piensa y procesa el mundo?',color:'#059669',cards:[
+    {i:'🕸️',h:'Pensamiento sistémico',p:'Ve conexiones entre variables, no solo eventos aislados. Comprende retroalimentaciones y efectos no lineales.'},
+    {i:'🔭',h:'Visión anticipatoria',p:'Orienta la mirada al largo plazo sin perder el presente. Actúa hoy en función del futuro que quiere construir.'},
+    {i:'🌊',h:'Tolerancia a la incertidumbre',p:'El futuro es múltiple e indeterminado. Convive con la ambigüedad y la convierte en espacio de posibilidad.'},
+    {i:'🚀',h:'Futuros múltiples',p:'No existe "el" futuro: hay futuros posibles, probables y deseables. Su trabajo es mapear ese espacio.'},
+  ]},
+  {icon:'🎓',title:'Formación',sub:'¿Qué base académica y profesional tiene?',color:'#b45309',cards:[
+    {i:'📚',h:'Perfil multidisciplinar',p:'Integra ciencias sociales, economía, tecnología, estadística y humanidades. Ninguna disciplina sola le basta.'},
+    {i:'🎖️',h:'Posgrado y certificación',p:'Formación avanzada en prospectiva estratégica, futurología o planificación de largo plazo.'},
+    {i:'⏱️',h:'Experiencia verificable',p:'Trayectoria comprobable en proyectos de análisis estratégico, planeación o gestión de la innovación.'},
+    {i:'🧩',h:'Aprendizaje continuo',p:'La prospectiva es una "indisciplina intelectual" (Godet). El líder actualiza permanentemente su kit de herramientas.'},
+  ]},
+  {icon:'⚡',title:'Rol',sub:'¿Qué funciones cumple en la organización?',color:'#be123c',cards:[
+    {i:'🔄',h:'Traduce datos en decisiones',p:'Convierte información técnica compleja en opciones de política y estrategia para los tomadores de decisión.'},
+    {i:'🗺️',h:'Construye escenarios',p:'Diseña 3-4 futuros coherentes que permiten prepararse para múltiples contingencias posibles.'},
+    {i:'🤝',h:'Gestiona el consenso',p:'Facilita acuerdos entre actores con intereses distintos, transformando la reflexión en compromiso de acción.'},
+    {i:'📡',h:'Monitorea señales de cambio',p:'Vigila el entorno en busca de señales débiles que anuncian rupturas relevantes para la organización.'},
+  ]},
+  {icon:'✨',title:'Atributos',sub:'¿Qué cualidades esenciales lo caracterizan?',color:'#5b21b6',cards:[
+    {i:'📖',h:'Conocimiento profundo',p:'Domina el andamiaje teórico de la prospectiva: escuelas, métodos y marcos conceptuales fundamentales.'},
+    {i:'💪',h:'Capacidades de liderazgo',p:'Efectividad personal al máximo. Coordina equipos heterogéneos y moviliza voluntades hacia una visión común.'},
+    {i:'💬',h:'Habilidades comunicativas',p:'Transmite hallazgos complejos de forma ejecutable y escucha activamente a todos los actores del proceso.'},
+    {i:'🏅',h:'Trayectoria validada',p:'Su credibilidad no viene solo del título sino de su historial: proyectos ejecutados y decisiones que influyeron.'},
+  ]},
+  {icon:'🌐',title:'Contexto',sub:'¿En qué entornos opera?',color:'#0e7490',cards:[
+    {i:'🏛️',h:'Sector público',p:'Gobiernos locales, nacionales, organismos multilaterales y entidades de planificación que requieren visión de largo plazo.'},
+    {i:'🏢',h:'Empresa privada',p:'Corporaciones e industrias que necesitan anticipar disrupciones tecnológicas, de mercado o regulatorias.'},
+    {i:'🎓',h:'Academia y think tanks',p:'Universidades y centros de investigación que producen conocimiento prospectivo y forman futuros líderes.'},
+    {i:'🌱',h:'Sociedad civil',p:'Organizaciones de sostenibilidad, derechos humanos, innovación social y desarrollo comunitario.'},
+  ]},
+];
+
+function showMapDetail(idx){
+  const d=mapData[idx];
+  document.getElementById('md-emoji').textContent=d.icon;
+  document.getElementById('md-title').textContent=d.title;
+  document.getElementById('md-sub').textContent=d.sub;
+  document.getElementById('md-grid').innerHTML=d.cards.map(c=>`
+    <div class="md-card" style="border-color:${d.color}30">
+      <span class="md-card-icon">${c.i}</span>
+      <h4 style="color:${d.color}">${c.h}</h4>
+      <p>${c.p}</p>
+    </div>`).join('');
+  const panel=document.getElementById('map-detail');
+  panel.classList.add('open');
+  panel.scrollIntoView({behavior:'smooth',block:'nearest'});
+}
+function closeMapDetail(){document.getElementById('map-detail').classList.remove('open')}
+
+/* ══ LINE ANIMATION ════════════════ */
+function drawLines(){
+  const mains=['ml1','ml2','ml3','ml4','ml5','ml6'];
+  const subs=[['sl1a','sl1b','sl1c'],['sl2a','sl2b','sl2c'],['sl3a','sl3b','sl3c'],['sl4a','sl4b','sl4c'],['sl5a','sl5b','sl5c'],['sl6a','sl6b','sl6c']];
+  mains.forEach((id,i)=>{
+    setTimeout(()=>{
+      const el=document.getElementById(id);
+      if(el) el.classList.add('drawn');
+      subs[i].forEach((sid,j)=>setTimeout(()=>{const s=document.getElementById(sid);if(s)s.classList.add('drawn')},280+j*110));
+    },350+i*160);
+  });
+}
+// draw on load if tab 0 active
+window.addEventListener('load',()=>setTimeout(drawLines,500));
+
+/* ══ PHASE TABLE DATA ══════════════ */
+const phases=[
+  {num:1,name:'Definición del objeto',desc:'Identificación del problema y alcance',method:'Pre-diagnóstico',
+   s:{txt:'Aprueban el alcance',pct:60},e:{txt:'Delimitan variables clave',pct:90},f:{txt:'Diseñan el cuestionario',pct:80},
+   detail:'Los Expertos formulan el problema con precisión quirúrgica. Los Stakeholders validan el alcance y otorgan autorización política. Los Facilitadores establecen el marco metodológico y las herramientas a utilizar.'},
+  {num:2,name:'Análisis estructural',desc:'Variables e interrelaciones del sistema',method:'MICMAC',
+   s:{txt:'Proveen datos institucionales',pct:45},e:{txt:'Identifican motricidad y dependencias',pct:95},f:{txt:'Ejecutan software y moderan talleres',pct:85},
+   detail:'Los Expertos aplican el modelado matemático del Micmac para identificar variables de alta motricidad. Los Facilitadores ejecutan el software y coordinan los talleres participativos de construcción de la matriz.'},
+  {num:3,name:'Juego de actores',desc:'Alianzas, conflictos y relaciones de poder',method:'MACTOR',
+   s:{txt:'Son mapeados y analizados',pct:75},e:{txt:'Interpretan convergencias y divergencias',pct:90},f:{txt:'Median alianzas e identifican conflictos',pct:95},
+   detail:'El Facilitador lidera el análisis Mactor. Los Expertos interpretan las convergencias y divergencias entre objetivos de los actores. Los Stakeholders participan como sujetos del análisis revelando sus objetivos reales.'},
+  {num:4,name:'Consulta experta',desc:'Reducción de incertidumbre y consenso',method:'Método Delphi',
+   s:{txt:'Validan prioridades',pct:40},e:{txt:'Responden rondas y reconsideren posturas',pct:100},f:{txt:'Aplican cuestionarios con anonimato',pct:90},
+   detail:'El Facilitador aplica el Delphi en 2 rondas con anonimato absoluto. Los Expertos (10-15 perfiles con mentes disruptivas) responden hipótesis de futuro. La segunda vuelta filtra sesgos individuales y genera inteligencia colectiva.'},
+  {num:5,name:'Construcción de escenarios',desc:'Futuros posibles, probables y deseables',method:'Ejes de Schwartz / Ábaco',
+   s:{txt:'Validan y eligen el escenario apuesta',pct:80},e:{txt:'Construyen narrativas e identifican rupturas',pct:85},f:{txt:'Moderan talleres y estructuran narrativas',pct:75},
+   detail:'Los Expertos construyen 3-4 escenarios coherentes combinando los resultados del Micmac y el Delphi. Los Stakeholders seleccionan el "escenario apuesta". Los Facilitadores garantizan coherencia, pertinencia y verosimilitud de cada narrativa.'},
+  {num:6,name:'Decisión y política pública',desc:'De la anticipación a la acción estratégica',method:'Hoja de ruta',
+   s:{txt:'Convierten en política y asignan recursos',pct:100},e:{txt:'Recomiendan acciones y monitorean',pct:60},f:{txt:'Documentan acuerdos y diseñan indicadores',pct:70},
+   detail:'Principio clave: la prospectiva solo tiene sentido si culmina en una decisión presente. Los Stakeholders transforman el escenario en política pública. Los Facilitadores documentan acuerdos y diseñan indicadores de seguimiento para la memoria institucional del proceso.'},
+];
+
+function buildPhaseTable(){
+  const tbody=document.getElementById('phase-body');
+  tbody.innerHTML='';
+  phases.forEach(ph=>{
+    const row=document.createElement('tr');
+    row.className='phase-row';
+    row.innerHTML=`
+      <td><div class="ph-name"><div class="ph-num">${ph.num}</div><div><h4>${ph.name}</h4><p>${ph.desc}</p><div class="ph-method">⚙️ ${ph.method}</div></div></div><div class="expand-tip">▼ clic para expandir</div></td>
+      <td class="actor-cell"><span class="a-chip chip-s">${ph.s.txt}</span><div class="ibar"><div class="ibar-fill if-s" data-w="${ph.s.pct}"></div></div><div class="pct">${ph.s.pct}%</div></td>
+      <td class="actor-cell"><span class="a-chip chip-e">${ph.e.txt}</span><div class="ibar"><div class="ibar-fill if-e" data-w="${ph.e.pct}"></div></div><div class="pct">${ph.e.pct}%</div></td>
+      <td class="actor-cell"><span class="a-chip chip-f">${ph.f.txt}</span><div class="ibar"><div class="ibar-fill if-f" data-w="${ph.f.pct}"></div></div><div class="pct">${ph.f.pct}%</div></td>`;
+    const detail=document.createElement('tr');
+    detail.className='phase-detail-row';
+    detail.id='pd-'+ph.num;
+    detail.innerHTML=`<td colspan="4" class="pd-cell"><div class="pd-inner"><h5>🎯 ¿Qué ocurre en esta fase?</h5><ul><li>${ph.detail}</li></ul></div></td>`;
+    row.addEventListener('click',()=>{
+      const isOpen=detail.classList.contains('open');
+      document.querySelectorAll('.phase-detail-row').forEach(d=>d.classList.remove('open'));
+      document.querySelectorAll('.phase-row').forEach(r=>r.classList.remove('active-row'));
+      if(!isOpen){detail.classList.add('open');row.classList.add('active-row')}
+    });
+    tbody.appendChild(row);
+    tbody.appendChild(detail);
+  });
+}
+buildPhaseTable();
+
+function animBars(){
+  document.querySelectorAll('.ibar-fill[data-w]').forEach((b,i)=>{
+    setTimeout(()=>{b.style.width=b.dataset.w+'%'},100+i*60);
+  });
+}
+
+/* ══ ACTOR MODAL DATA ══════════════ */
+const actorData={
+  stake:{emoji:'🏛️',title:'Stakeholders',bg:'linear-gradient(140deg,#1849a9,#2563eb)',
+    desc:'Beneficiarios y tomadores de decisión. Su compromiso convierte el escenario en política pública real.',
+    items:['Internamente: Directivos, Coordinaciones y Secretarías de la organización.',
+      'Externamente: Gobierno, empresarios, ONG y ciudadanía organizada.',
+      'Transforman los escenarios identificados en decisiones de gobierno o inversión.',
+      'Su participación activa garantiza la legitimidad política del proceso.',
+      'Función final: aprobar el rumbo estratégico y financiar la implementación.']},
+  experto:{emoji:'🔍',title:'Expertos — Reserva de Inteligencia',bg:'linear-gradient(140deg,#0f766e,#0d9488)',
+    desc:'Mentes disruptivas que aportan conocimiento especializado para identificar fuerzas directoras bajo el marco STEEPV.',
+    items:['Expertos Intencionales: el Solicitante (quien requiere la solución) y el Realizador (quien lidera).',
+      'Expertos Arquetipo: modelos de referencia (OCDE, organismos internacionales) o diseño propio.',
+      'De Herramientas: especialistas técnicos en software y modelos matemáticos (Micmac, Mactor).',
+      'De Contenido: académicos, gerentes y consumidores que conocen el sistema desde el uso cotidiano.',
+      'Marco STEEPV: Social, Tecnológico, Económico, Ecológico, Político y Valores.']},
+  facil:{emoji:'⚖️',title:'Facilitadores del Proceso',bg:'linear-gradient(140deg,#6d28d9,#7c3aed)',
+    desc:'Guardianes del rigor metodológico. Su dominio no es el tema sino el proceso; aseguran que el ejercicio funcione con precisión.',
+    items:['Gestionan la logística técnica del ejercicio de principio a fin.',
+      'Validan y aplican cuestionarios del Método Delphi con anonimato absoluto.',
+      'Median en el análisis Mactor para identificar alianzas tácticas y conflictos de interés.',
+      'Coordinan recursos humanos y resuelven dudas metodológicas del equipo.',
+      '¿Deseas diseñar la orquesta (Estructural), dominar el instrumento (Herramientas) o proveer la partitura (Contenido)?']},
+};
+
+function showActorModal(key){
+  const d=actorData[key];
+  document.getElementById('ame').textContent=d.emoji;
+  document.getElementById('amt-title').textContent=d.title;
+  document.getElementById('amt-desc').textContent=d.desc;
+  document.getElementById('amt').style.background=d.bg;
+  document.getElementById('aml').innerHTML=d.items.map(i=>`<li><span>→</span>${i}</li>`).join('');
+  document.getElementById('amodal').classList.add('open');
+}
+function closeActorModal(){document.getElementById('amodal').classList.remove('open')}
+document.getElementById('amodal').addEventListener('click',e=>{if(e.target===document.getElementById('amodal'))closeActorModal()});
+document.addEventListener('keydown',e=>{if(e.key==='Escape'){closeMapDetail();closeActorModal()}});
+
+/* ══ SCROLL REVEAL ══════════════════ */
+const io=new IntersectionObserver(entries=>{
+  entries.forEach(e=>{if(!e.isIntersecting)return;e.target.classList.add('on');io.unobserve(e.target)});
+},{threshold:.12});
+document.querySelectorAll('.rv').forEach(el=>io.observe(el));
+</script>
+</body>
+</html>
